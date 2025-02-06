@@ -42,7 +42,7 @@ function añadirItemALista(textoItem, urlImagen = '', completado = false) {
     nuevoItem.classList.toggle('completado');
     botonCompletado.textContent = nuevoItem.classList.contains('completado') ? 'Desmarcar' : 'Marcar';
     botonCompletado.classList.toggle('completado');
-    guardarLista();
+    guardarLista(); // Guardar la lista después de marcar/desmarcar
   });
 
   // Imagen del producto (si se proporciona una URL)
@@ -61,7 +61,7 @@ function añadirItemALista(textoItem, urlImagen = '', completado = false) {
   botonEliminar.textContent = 'Eliminar';
   botonEliminar.addEventListener('click', function () {
     lista.removeChild(nuevoItem);
-    guardarLista();
+    guardarLista(); // Guardar la lista después de eliminar
   });
 
   // Añadir elementos al item
@@ -82,7 +82,7 @@ formulario.addEventListener('submit', function (e) {
 
   if (textoItem !== "") {
     añadirItemALista(textoItem, urlImagen);
-    guardarLista();
+    guardarLista(); // Guardar la lista después de añadir
     inputItem.value = '';
     inputImagen.value = '';
   }
