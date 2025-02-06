@@ -23,7 +23,7 @@ formulario.addEventListener('submit', function (e) {
         botonCompletado.textContent = 'Desmarcar';
         botonCompletado.classList.add('completado');
       } else {
-        botonCompletado.textContent = 'Marcar';
+        botonCompletado.textContent = 'Comprado';
         botonCompletado.classList.remove('completado');
       }
     });
