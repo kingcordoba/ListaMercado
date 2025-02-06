@@ -2,7 +2,6 @@
 const formulario = document.getElementById('formulario');
 const lista = document.getElementById('lista');
 const inputItem = document.getElementById('item');
-const inputImagen = document.getElementById('imagen');
 
 // Cargar la lista desde localStorage al iniciar la página
 cargarLista();
@@ -11,7 +10,7 @@ cargarLista();
 function cargarLista() {
   const listaGuardada = JSON.parse(localStorage.getItem('listaCompras')) || [];
   listaGuardada.forEach(item => {
-    añadirItemALista(item.texto, item.imagen, item.completado);
+    añadirItemALista(item.texto, item.completado);
   });
 }
 
@@ -21,7 +20,6 @@ function guardarLista() {
   document.querySelectorAll('#lista li').forEach(li => {
     items.push({
       texto: li.querySelector('span').textContent,
-      imagen: li.querySelector('img') ? li.querySelector('img').src : '',
       completado: li.classList.contains('completado')
     });
   });
@@ -29,7 +27,7 @@ function guardarLista() {
 }
 
 // Función para añadir un item a la lista
-function añadirItemALista(textoItem, urlImagen = '', completado = false) {
+function añadirItemALista(textoItem, completado = false) {
   const nuevoItem = document.createElement('li');
   if (completado) nuevoItem.classList.add('completado');
 
@@ -44,13 +42,6 @@ function añadirItemALista(textoItem, urlImagen = '', completado = false) {
     botonCompletado.classList.toggle('completado');
     guardarLista(); // Guardar la lista después de marcar/desmarcar
   });
-
-  // Imagen del producto (si se proporciona una URL)
-  if (urlImagen) {
-    const imagenProducto = document.createElement('img');
-    imagenProducto.src = urlImagen;
-    nuevoItem.appendChild(imagenProducto);
-  }
 
   // Texto del producto
   const textoProducto = document.createElement('span');
@@ -78,12 +69,10 @@ formulario.addEventListener('submit', function (e) {
   e.preventDefault(); // Evitar que el formulario se envíe
 
   const textoItem = inputItem.value.trim(); // Obtener el nombre del producto
-  const urlImagen = inputImagen.value.trim(); // Obtener la URL de la imagen
 
   if (textoItem !== "") {
-    añadirItemALista(textoItem, urlImagen);
+    añadirItemALista(textoItem);
     guardarLista(); // Guardar la lista después de añadir
     inputItem.value = '';
-    inputImagen.value = '';
   }
 });

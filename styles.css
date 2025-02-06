@@ -15,7 +15,7 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  width: 400px; /* Ancho fijo */
+  width: 400px;
   text-align: center;
 }
 
@@ -32,7 +32,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-#item, #imagen {
+#item {
   width: 100%;
   padding: 10px;
   border: 1px solid #444;
@@ -76,13 +76,6 @@ li {
 li.completado {
   text-decoration: line-through;
   opacity: 0.7;
-}
-
-li img {
-  width: 50px;
-  height: 50px;
-  border-radius: 4px;
-  object-fit: cover;
 }
 
 li button {
